@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.pdiarm.installkeybox.InstallKeyBox">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/device_id"
+        android:id="@+id/deviceid_label"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="71dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/deviceID_editText"
+        android:layout_alignTop="@+id/deviceid_label"
+        android:layout_toEndOf="@+id/deviceid_label"
+        android:hint="@string/device_id_hint"
+        android:inputType="textNoSuggestions"
+        android:digits="@string/hex_digits"
+        android:maxLength="64" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/device_key"
+        android:id="@+id/deviceKey_label"
+        android:layout_below="@+id/deviceID_editText"
+        android:layout_alignStart="@+id/keyData_label"
+        android:layout_marginTop="46dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/key_data"
+        android:id="@+id/keyData_label"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/deviceKey_label"
+        android:layout_toStartOf="@+id/deviceID_editText" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/deviceKey_editText"
+        android:layout_alignTop="@+id/deviceKey_label"
+        android:layout_toEndOf="@+id/deviceKey_label"
+        android:hint="@string/device_key_hint"
+        android:inputType="textNoSuggestions"
+        android:digits="@string/hex_digits"
+        android:maxLength="32" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/keyData_editText"
+        android:hint="@string/key_data_hint"
+        android:inputType="textNoSuggestions"
+        android:digits="@string/hex_digits"
+        android:maxWidth="144dp"
+        android:layout_alignTop="@+id/keyData_label"
+        android:layout_alignStart="@+id/deviceID_editText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/CRC"
+        android:id="@+id/CRC_label"
+        android:layout_below="@+id/keyData_editText"
+        android:layout_alignStart="@+id/keyData_label"
+        android:layout_marginTop="51dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CRC_editText"
+        android:hint="@string/CRC_hint"
+        android:inputType="textNoSuggestions"
+        android:digits="@string/hex_digits"
+        android:maxWidth="8dp"
+        android:layout_above="@+id/file_switch"
+        android:layout_toEndOf="@+id/CRC_label" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pgm_keybox_btn_txt"
+        android:id="@+id/pgm_keybox_btn"
+        android:hint="@string/pgm_keybox_btn_txt_hint"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/CRC_editText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/response_hint"
+        android:id="@+id/responseTxtView"
+        android:hint="@string/response_hint"
+        android:textIsSelectable="true"
+        android:maxWidth="320dp"
+        android:maxHeight="160dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/CRC_label" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/use_keybox_file_switch"
+        android:id="@+id/file_switch"
+        android:layout_below="@+id/CRC_label"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="67dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/filename_entry"
+        android:id="@+id/fileloc_label"
+        android:layout_alignBottom="@+id/file_switch"
+        android:layout_toEndOf="@+id/file_switch" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fileloc_EdtVw"
+        android:layout_alignTop="@+id/fileloc_label"
+        android:layout_toEndOf="@+id/fileloc_label"
+        android:enabled="false"
+        android:hint="@string/filename_entry_hint" />
+
+</RelativeLayout>
