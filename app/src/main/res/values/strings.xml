@@ -17,4 +17,5 @@
     <string name="use_keybox_file_switch">Use File</string>
     <string name="filename_entry">Filename:</string>
     <string name="filename_entry_hint">Example: /mnt/sdcard/Download/keybox.xml </string>
+    <string name="device_id_txt_view_prefix">Device ID Detected:</string>
 </resources>

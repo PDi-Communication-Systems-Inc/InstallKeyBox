@@ -12,12 +12,15 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Properties;
 
 public class InstallKeyBox extends Activity {
     public final String TAG = "InstallKeyBoxActivity";
@@ -33,6 +36,7 @@ public class InstallKeyBox extends Activity {
         EditText devKeyEdtTxt = (EditText) findViewById(R.id.deviceKey_editText);
         EditText keyDataEdtTxt = (EditText) findViewById(R.id.keyData_editText);
         EditText crcEdtTxt = (EditText) findViewById(R.id.CRC_editText);
+        TextView deviceIDDetected = (TextView) findViewById(R.id.deviceKey_editText);
 
         // Define using the file switch behavior
         fileSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -102,7 +106,18 @@ public class InstallKeyBox extends Activity {
 
                         // a list was returned just get the first one for now
                         if (kbaList != null) {
-                            kba = kbaList.get(0);
+                            Properties properties = System.getProperties();
+                            String serialNo = properties.getProperty("ro.serialno");
+
+                            /* Find the keybox data object whose device id matches target serial no
+                               -- use the lsat one if not found
+                             */
+                            for(int i = 0; i < kbaList.size(); i++) {
+                                kba = kbaList.get(i);
+                                if (kba.getDeviceID().equals(serialNo)) {
+                                    break;
+                                }
+                            }
                         }
 
                         // fill in those edit text fields
@@ -163,6 +178,13 @@ public class InstallKeyBox extends Activity {
             }
         });
 
+        // dusplay device id at top of activity
+        Properties properties = System.getProperties();
+        String serialNo = properties.getProperty("ro.serialno");
+        if (serialNo != null) {
+            deviceIDDetected.setText(getResources().getString(R.string.device_id_txt_view_prefix)
+                                     + " " + serialNo);
+        }
     }
 
     @Override
