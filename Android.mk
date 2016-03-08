@@ -4,18 +4,17 @@ include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := $(call all-java-files-under, app/src/main)
 
-LOCAL_STATIC_JAVA_LIBRARIES := android-support-v7-appcompat
+#LOCAL_STATIC_JAVA_LIBRARIES := android-support-v7-appcompat
 
 #LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := android-support-v4:libs/android-support-v4.jar \
 #                                        android-support-v7-appcompat:libs/android-support-v7-appcompat.jar
 
-LOCAL_AAPT_FLAGS := \
-        --auto-add-overlay \
-        --extra-packages android-support-v7-appcompat
+#LOCAL_AAPT_FLAGS := \
+#        --auto-add-overlay \
+#        --extra-packages android-support-v7-appcompat
 
 LOCAL_MANIFEST_FILE := app/src/main/AndroidManifest.xml
-LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/app/src/main/res/ \
-                      $(TOPDIR)frameworks/support/v7/appcompat/res
+LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/app/src/main/res/
 
 LOCAL_PACKAGE_NAME := installkeybox
 LOCAL_MODULE_TAGS := optional
