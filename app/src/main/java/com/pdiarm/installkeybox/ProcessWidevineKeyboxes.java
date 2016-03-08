@@ -130,7 +130,13 @@ public class ProcessWidevineKeyboxes {
                 eventType = parser.nextTag();
                 parser.require(XmlPullParser.END_TAG, null, CRC_NODE_NAME);
 
+                // expect end of keybox tag
+                eventType = parser.nextTag();
+                parser.require(XmlPullParser.END_TAG, null, KEYBOX_NODE_NAME);
+
+                // add keybox to list
                 kbaList.add(kba);
+
             }
         } catch (IOException ioe){
             Log.e(TAG, "IO Exception in parsing Widevine xml file, error is " + ioe.toString());
